@@ -1,0 +1,1516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Alhambra (Granada) – Landmark Guide</title>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --paper:#ffffff;
+      --ink:#0b1220;
+      --muted:rgba(11,18,32,.62);
+      --line:rgba(11,18,32,.10);
+
+      --gold:#caa84c;
+      --teal:#0ea5e9;
+      --green:#10b981;
+
+      --serif: ui-serif, Georgia, "Times New Roman", serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --radius:24px;
+      --shadow: 0 20px 80px rgba(11,18,32,.18);
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(900px 600px at 15% -10%, rgba(202,168,76,.22), transparent 60%),
+        radial-gradient(900px 600px at 85% -10%, rgba(14,165,233,.18), transparent 60%),
+        radial-gradient(900px 600px at 60% 110%, rgba(16,185,129,.14), transparent 60%),
+        linear-gradient(180deg, #f6f7fb 0%, #f1f4fb 40%, #edf2fb 100%);
+      overflow-x:hidden;
+    }
+
+    /* Top bar */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background: rgba(255,255,255,.70);
+      backdrop-filter: blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbarInner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:950;
+      letter-spacing:.2px;
+      color: rgba(11,18,32,.90);
+      white-space:nowrap;
+    }
+    .brandMark{
+      width:30px; height:30px; border-radius:12px;
+      background: conic-gradient(from 220deg, rgba(202,168,76,.95), rgba(14,165,233,.85), rgba(16,185,129,.85), rgba(202,168,76,.95));
+      box-shadow: 0 18px 40px rgba(202,168,76,.18);
+      border:1px solid rgba(11,18,32,.08);
+    }
+    .nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      color: rgba(11,18,32,.78);
+      font-weight:900;
+      font-size:13px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.78);
+      transition: transform .12s ease, background .12s ease;
+    }
+    .nav a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.92); }
+
+    /* Layout */
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:20px 18px 88px;
+    }
+
+    /* Hero */
+    .hero{
+      border-radius: calc(var(--radius) + 10px);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.78);
+    }
+    .heroTop{
+      padding:18px 18px 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .kicker{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-bottom:10px;
+    }
+    .pill{
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.45px;
+      color: rgba(11,18,32,.62);
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.80);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+    h1{
+      margin:0;
+      font-family:var(--serif);
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.7px;
+      color: rgba(11,18,32,.92);
+    }
+    .subtitle{
+      margin-top:10px;
+      color: rgba(11,18,32,.72);
+      font-size:14px;
+      line-height:1.55;
+      max-width: 92ch;
+    }
+
+    .summaryLine{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 18px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.78);
+    }
+    .score{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight:950;
+      color: rgba(11,18,32,.86);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .sep{ width:1px; height:14px; background: rgba(11,18,32,.14); }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.82);
+      font-size:12px;
+      font-weight:950;
+      color: rgba(11,18,32,.62);
+      white-space:nowrap;
+    }
+
+    /* Photos section (separate) */
+    .photos{
+      margin-top:14px;
+      border-top:1px solid rgba(11,18,32,.08);
+      background:
+        radial-gradient(700px 360px at 15% 0%, rgba(202,168,76,.12), transparent 60%),
+        radial-gradient(700px 360px at 85% 0%, rgba(14,165,233,.10), transparent 60%),
+        rgba(255,255,255,.65);
+      padding:14px;
+    }
+    .photosHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:0 4px 12px;
+    }
+    .hLabel{
+      display:flex; align-items:center; gap:10px;
+    }
+    .sectionName{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.48px;
+      color: rgba(11,18,32,.55);
+      font-weight:950;
+      margin:0;
+    }
+    .photoCount{
+      font-size:12.5px;
+      color: rgba(11,18,32,.58);
+      font-weight:900;
+    }
+    .photoNav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .arrowBtn{
+      width:44px;height:44px;
+      border-radius:16px;
+      border:1px solid rgba(11,18,32,.12);
+      background: rgba(255,255,255,.84);
+      box-shadow: 0 18px 40px rgba(11,18,32,.10);
+      cursor:pointer;
+      font-size:20px;
+      font-weight:950;
+      color: rgba(11,18,32,.70);
+      user-select:none;
+    }
+
+    .photoStage{
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.86);
+      display:grid;
+      grid-template-columns: 1.6fr .8fr;
+      gap:12px;
+      padding:12px;
+    }
+
+    .mainPhoto{
+      border-radius: 18px;
+      overflow:hidden;
+      position:relative;
+      min-height: 360px;
+      background: rgba(11,18,32,.06);
+      cursor: zoom-in;
+    }
+    .mainPhoto img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.01);
+    }
+    .photoOverlay{
+      position:absolute;
+      left:12px; right:12px; bottom:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      pointer-events:none;
+    }
+    .overlayChip{
+      pointer-events:none;
+      font-size:12px;
+      font-weight:950;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.86);
+      color: rgba(11,18,32,.70);
+      backdrop-filter: blur(10px);
+    }
+    .zoomHint{
+      pointer-events:none;
+      font-size:12px;
+      font-weight:950;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.86);
+      color: rgba(11,18,32,.70);
+      backdrop-filter: blur(10px);
+    }
+
+    .thumbs{
+      border-radius: 18px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.78);
+      padding:10px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      align-content:start;
+      max-height: 360px;
+      overflow:auto;
+    }
+    .thumb{
+      border-radius: 14px;
+      overflow:hidden;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(11,18,32,.06);
+      cursor:pointer;
+      position:relative;
+    }
+    .thumb img{
+      width:100%;
+      height:110px;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.01);
+    }
+    .thumb.active{
+      outline: 3px solid rgba(202,168,76,.55);
+      border-color: rgba(202,168,76,.60);
+    }
+
+    /* Blocks (each section looks different) */
+    .grid2{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:12px;
+      align-items:start;
+    }
+
+    .card{
+      border-radius: calc(var(--radius) + 6px);
+      border:1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .cardHead{
+      padding:16px 18px;
+      background:
+        radial-gradient(620px 240px at 20% 0%, rgba(202,168,76,.22), transparent 60%),
+        radial-gradient(620px 240px at 80% 0%, rgba(14,165,233,.16), transparent 60%),
+        rgba(255,255,255,.82);
+      border-bottom:1px solid rgba(11,18,32,.08);
+    }
+    .cardBody{
+      padding:18px;
+      background: rgba(255,255,255,.82);
+    }
+    .bigText{
+      margin:0;
+      font-family:var(--serif);
+      font-size:17px;
+      line-height:1.68;
+      letter-spacing:-.10px;
+      color: rgba(11,18,32,.92);
+    }
+    .smallNote{
+      margin:10px 0 0;
+      font-size:13px;
+      line-height:1.55;
+      color: rgba(11,18,32,.68);
+    }
+
+    /* Right-side "Quick essentials" */
+    .essentials{
+      border-radius: calc(var(--radius) + 6px);
+      border:1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.82);
+      overflow:hidden;
+    }
+    .essHead{
+      padding:14px 16px;
+      border-bottom:1px solid rgba(11,18,32,.08);
+      background: rgba(255,255,255,.84);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .essTitle{
+      font-weight:950;
+      color: rgba(11,18,32,.90);
+      font-size:14px;
+    }
+    .essBadge{
+      font-size:12px;
+      font-weight:950;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.90);
+      color: rgba(11,18,32,.62);
+      white-space:nowrap;
+    }
+    .essList{
+      padding:14px 16px;
+      display:grid;
+      gap:10px;
+    }
+    .essRow{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.86);
+    }
+    .essRow span{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.45px;
+      color: rgba(11,18,32,.55);
+      font-weight:950;
+      min-width: 120px;
+    }
+    .essRow b{
+      font-size:13.5px;
+      color: rgba(11,18,32,.84);
+      font-weight:950;
+      text-align:right;
+      line-height:1.25;
+    }
+
+    /* What to see (creative layout) */
+    .seeWrap{
+      margin-top:14px;
+      border-radius: calc(var(--radius) + 6px);
+      border:1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.82);
+      overflow:hidden;
+    }
+    .seeHead{
+      padding:16px 18px;
+      border-bottom:1px solid rgba(11,18,32,.08);
+      background:
+        linear-gradient(90deg, rgba(202,168,76,.20), rgba(14,165,233,.12), rgba(16,185,129,.10)),
+        rgba(255,255,255,.82);
+    }
+    .seeGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:12px;
+      padding:18px;
+    }
+    .seeCard{
+      border-radius:18px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.86);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+      min-height: 150px;
+    }
+    .seeCard:before{
+      content:"";
+      position:absolute;
+      inset:-40px -40px auto auto;
+      width:120px; height:120px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(202,168,76,.30), transparent 60%);
+      transform: rotate(20deg);
+    }
+    .seeTitle{
+      margin:0;
+      font-weight:950;
+      font-size:14px;
+      color: rgba(11,18,32,.90);
+    }
+    .seeText{
+      margin:8px 0 0;
+      font-size:13px;
+      line-height:1.45;
+      color: rgba(11,18,32,.70);
+    }
+    .seeMeta{
+      margin-top:10px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .chip{
+      font-size:12px;
+      font-weight:950;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.88);
+      color: rgba(11,18,32,.62);
+    }
+
+    /* When to stay (more compact + clearer) */
+    .stayWrap{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    .stayCard{
+      border-radius: calc(var(--radius) + 6px);
+      border:1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.82);
+      overflow:hidden;
+    }
+    .stayHead{
+      padding:16px 18px;
+      border-bottom:1px solid rgba(11,18,32,.08);
+      background:
+        radial-gradient(560px 220px at 20% 0%, rgba(14,165,233,.18), transparent 60%),
+        radial-gradient(560px 220px at 80% 0%, rgba(202,168,76,.14), transparent 60%),
+        rgba(255,255,255,.84);
+    }
+    .stayBody{ padding:18px; }
+    .bars{
+      margin-top:12px;
+      display:grid;
+      gap:10px;
+    }
+    .barRow{
+      display:grid;
+      grid-template-columns: 120px 1fr 80px;
+      gap:10px;
+      align-items:center;
+    }
+    .barLabel{
+      font-weight:950;
+      color: rgba(11,18,32,.74);
+      font-size:13px;
+    }
+    .bar{
+      height:10px;
+      border-radius:999px;
+      background: rgba(11,18,32,.08);
+      overflow:hidden;
+      border:1px solid rgba(11,18,32,.08);
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(202,168,76,.88), rgba(14,165,233,.78));
+    }
+    .barNote{
+      font-size:12.5px;
+      color: rgba(11,18,32,.58);
+      font-weight:950;
+      text-align:right;
+    }
+
+    /* Bring & warnings (longer text) */
+    .warnWrap{
+      margin-top:14px;
+      border-radius: calc(var(--radius) + 6px);
+      border:1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.82);
+      overflow:hidden;
+    }
+    .warnHead{
+      padding:16px 18px;
+      border-bottom:1px solid rgba(11,18,32,.08);
+      background:
+        radial-gradient(560px 240px at 10% 0%, rgba(16,185,129,.16), transparent 60%),
+        radial-gradient(560px 240px at 90% 0%, rgba(202,168,76,.16), transparent 60%),
+        rgba(255,255,255,.84);
+    }
+    .warnBody{ padding:18px; }
+    .warnCols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .warnBox{
+      border-radius: 18px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.88);
+      padding:14px;
+    }
+    .warnBox h3{
+      margin:0;
+      font-size:13px;
+      font-weight:950;
+      color: rgba(11,18,32,.90);
+      letter-spacing:.2px;
+    }
+    .warnBox p{
+      margin:8px 0 0;
+      font-size:13px;
+      line-height:1.55;
+      color: rgba(11,18,32,.70);
+    }
+    .warnList{
+      margin:10px 0 0;
+      padding:0 0 0 18px;
+      color: rgba(11,18,32,.74);
+      font-size:13.5px;
+      line-height:1.55;
+    }
+    .warnList li{ margin:7px 0; }
+
+    /* Location + map */
+    .locGrid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    .locCard{
+      border-radius: calc(var(--radius) + 6px);
+      border:1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.82);
+      overflow:hidden;
+    }
+    .locHead{
+      padding:16px 18px;
+      border-bottom:1px solid rgba(11,18,32,.08);
+      background: rgba(255,255,255,.84);
+    }
+    .locBody{ padding:18px; }
+    .miniPills{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .miniPill{
+      font-size:12px;
+      font-weight:950;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.90);
+      color: rgba(11,18,32,.62);
+    }
+    .btnRow{ margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(11,18,32,.12);
+      background: rgba(255,255,255,.92);
+      font-weight:950;
+      font-size:13px;
+      color: rgba(11,18,32,.78);
+      text-decoration:none;
+      box-shadow: 0 18px 40px rgba(11,18,32,.10);
+      cursor:pointer;
+    }
+
+    .mapShell{
+      margin-top:12px;
+      border-radius: 20px;
+      overflow:hidden;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(234,247,255,.80);
+      position:relative;
+      height:380px;
+    }
+    .mapBg{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(520px 320px at 25% 25%, rgba(202,168,76,.18), transparent 60%),
+        radial-gradient(520px 320px at 75% 70%, rgba(14,165,233,.16), transparent 60%),
+        linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.10));
+    }
+    .mapLabel{
+      position:absolute;
+      top:12px; left:12px;
+      background: rgba(255,255,255,.88);
+      border:1px solid rgba(11,18,32,.10);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      color: rgba(11,18,32,.65);
+      backdrop-filter: blur(10px);
+      z-index:2;
+    }
+    .mapLegend{
+      position:absolute;
+      top:12px; right:12px;
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;
+      z-index:2;
+    }
+    .legendChip{
+      font-size:12px;
+      font-weight:950;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.82);
+      color: rgba(11,18,32,.62);
+    }
+    .mapSearch{
+      position:absolute;
+      left:12px;
+      bottom:12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      width: 360px;
+      padding:10px 12px;
+      border-radius:18px;
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(11,18,32,.10);
+      box-shadow: 0 22px 60px rgba(11,18,32,.12);
+      backdrop-filter: blur(10px);
+      font-size:13px;
+      font-weight:900;
+      color: rgba(11,18,32,.60);
+      z-index:2;
+    }
+    .mapSearch .glassIcon{
+      width:30px;height:30px;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.82);
+      color: rgba(11,18,32,.55);
+      font-weight:950;
+    }
+
+    .pin{
+      position:absolute;
+      width:14px;height:14px;border-radius:50%;
+      border:2px solid white;
+      box-shadow: 0 14px 30px rgba(11,18,32,.18);
+      cursor:default;
+      z-index:2;
+    }
+    .pin.main{ background: var(--gold); }
+    .pin.near{ background: var(--teal); }
+    .pin.view{ background: var(--green); }
+
+    .popup{
+      position:absolute;
+      min-width: 280px;
+      max-width: 340px;
+      background: rgba(255,255,255,.95);
+      border:1px solid rgba(11,18,32,.10);
+      border-radius:18px;
+      padding:12px;
+      box-shadow: 0 22px 60px rgba(11,18,32,.14);
+      backdrop-filter: blur(10px);
+      opacity:0;
+      transform: translateY(6px);
+      pointer-events:none;
+      transition: opacity .12s ease, transform .12s ease;
+      z-index:2;
+    }
+    .pin:hover + .popup{ opacity:1; transform: translateY(0); }
+    .popTop{ display:flex; justify-content:space-between; gap:10px; margin-bottom:6px; }
+    .popTitle{ font-weight:950; font-size:13px; line-height:1.2; color: rgba(11,18,32,.90); }
+    .popRating{ font-weight:950; font-size:12px; color: rgba(11,18,32,.65); white-space:nowrap; }
+    .popText{ margin:0; font-size:12.5px; color: rgba(11,18,32,.72); line-height:1.35; }
+
+    /* Reviews + tips */
+    .reviewsWrap{
+      margin-top:14px;
+      border-radius: calc(var(--radius) + 6px);
+      border:1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.82);
+      overflow:hidden;
+    }
+    .reviewsHead{
+      padding:16px 18px;
+      border-bottom:1px solid rgba(11,18,32,.08);
+      background:
+        radial-gradient(560px 240px at 15% 0%, rgba(202,168,76,.18), transparent 60%),
+        radial-gradient(560px 240px at 85% 0%, rgba(16,185,129,.14), transparent 60%),
+        rgba(255,255,255,.84);
+    }
+    .reviewsBody{ padding:18px; }
+    .reviewsGrid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      align-items:start;
+    }
+    .quote{
+      border-radius: 18px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.90);
+      padding:14px;
+    }
+    .quoteTop{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .qName{
+      font-weight:950;
+      color: rgba(11,18,32,.90);
+      font-size:13px;
+    }
+    .qMeta{
+      color: rgba(11,18,32,.62);
+      font-weight:900;
+      font-size:12.5px;
+      white-space:nowrap;
+    }
+    .qText{
+      margin:0;
+      font-size:13px;
+      line-height:1.55;
+      color: rgba(11,18,32,.74);
+    }
+    .tipsBox{
+      border-radius: 18px;
+      border:1px solid rgba(11,18,32,.10);
+      background: rgba(255,255,255,.90);
+      padding:14px;
+    }
+    .tipsBox h3{
+      margin:0;
+      font-weight:950;
+      font-size:13px;
+      color: rgba(11,18,32,.90);
+    }
+    .tipsList{
+      margin:10px 0 0;
+      padding:0 0 0 18px;
+      color: rgba(11,18,32,.76);
+      font-size:13.5px;
+      line-height:1.55;
+    }
+    .tipsList li{ margin:8px 0; }
+
+    .footerNote{
+      margin-top:18px;
+      text-align:center;
+      font-size:12.5px;
+      color: rgba(11,18,32,.58);
+      padding:10px 0 0;
+    }
+
+    /* Modal zoom */
+    .modal{
+      position:fixed;
+      inset:0;
+      background: rgba(11,18,32,.70);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:100;
+      padding:18px;
+    }
+    .modal.open{ display:flex; }
+    .modalInner{
+      width:min(1100px, 96vw);
+      height:min(78vh, 820px);
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 28px 90px rgba(0,0,0,.35);
+      position:relative;
+    }
+    .modalInner img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      background: rgba(11,18,32,.72);
+      display:block;
+    }
+    .modalClose{
+      position:absolute;
+      top:12px; right:12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.92);
+      font-weight:950;
+      cursor:pointer;
+      padding:10px 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Light responsiveness (not a dedicated “mobile version”, just prevents breakage) */
+    @media (max-width: 980px){
+      .photoStage{ grid-template-columns: 1fr; }
+      .thumbs{ grid-template-columns: 1fr 1fr; max-height: 220px; }
+      .grid2{ grid-template-columns: 1fr; }
+      .seeGrid{ grid-template-columns: 1fr; }
+      .stayWrap{ grid-template-columns: 1fr; }
+      .warnCols{ grid-template-columns: 1fr; }
+      .locGrid{ grid-template-columns: 1fr; }
+      .reviewsGrid{ grid-template-columns: 1fr; }
+      h1{ font-size:40px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbarInner">
+      <div class="brand">
+        <div class="brandMark"></div>
+        <div>Landmark Atlas</div>
+      </div>
+
+      <nav class="nav" aria-label="Page sections">
+        <a href="#photos">Photos</a>
+        <a href="#description">Description</a>
+        <a href="#history">History + facts</a>
+        <a href="#see">What to see</a>
+        <a href="#stay">When to stay</a>
+        <a href="#bring">What to bring</a>
+        <a href="#location">Location + map</a>
+        <a href="#reviews">What people say</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-label="Hero">
+      <div class="heroTop">
+        <div style="max-width: 92ch;">
+          <div class="kicker">
+            <span class="pill">UNESCO WORLD HERITAGE</span>
+            <span class="pill">NASRID PALACES</span>
+            <span class="pill">GRANADA</span>
+          </div>
+
+          <h1>The Alhambra</h1>
+
+          <div class="summaryLine" aria-label="Summary line (prototype)">
+            <div class="score">
+              <span style="color:rgba(11,18,32,.78); letter-spacing:.6px;">★</span>
+              <span>4.7</span>
+              <span style="color:rgba(11,18,32,.55); font-weight:900;">·</span>
+              <span style="color:rgba(11,18,32,.65); font-weight:900;">(rating/reviews: connect your real source)</span>
+            </div>
+
+            <div class="sep" aria-hidden="true"></div>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+              <span class="tag">architecture</span>
+              <span class="tag">gardens + water</span>
+              <span class="tag">sunset viewpoints</span>
+              <span class="tag">deep history</span>
+            </div>
+          </div>
+
+          <p class="subtitle">
+            A hilltop city-palace: carved stone that reads like lace, courtyards tuned to light and water,
+            and views that pull Granada and the Sierra Nevada into the same frame.
+          </p>
+        </div>
+
+        <div style="min-width:260px; text-align:right;">
+          <div style="font-weight:950; color:rgba(11,18,32,.78); font-size:13px;">Design goal</div>
+          <div style="margin-top:6px; color:rgba(11,18,32,.62); font-weight:900; font-size:13px; line-height:1.35;">
+            Clear, sectioned, high-signal. Everything visible. Photos separated. Map = pro pins + hover popups.
+          </div>
+        </div>
+      </div>
+
+      <!-- PHOTOS -->
+      <section class="photos" id="photos" aria-label="Photos">
+        <div class="photosHeader">
+          <div class="hLabel">
+            <h2 class="sectionName">Photos</h2>
+            <div class="photoCount" id="photoCount">Loading photos…</div>
+          </div>
+
+          <div class="photoNav">
+            <button class="arrowBtn" id="prev" aria-label="Previous photo">‹</button>
+            <button class="arrowBtn" id="next" aria-label="Next photo">›</button>
+          </div>
+        </div>
+
+        <div class="photoStage" aria-label="Photo gallery">
+          <div class="mainPhoto" id="mainPhoto" aria-label="Main photo (click to zoom)">
+            <img id="mainImg" src="" alt="Alhambra photo" />
+            <div class="photoOverlay">
+              <div class="overlayChip" id="mainCaption">Photo</div>
+              <div class="zoomHint">Click to zoom</div>
+            </div>
+          </div>
+
+          <div class="thumbs" id="thumbs" aria-label="Thumbnails"></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- DESCRIPTION + ESSENTIALS -->
+    <section class="grid2" id="description" aria-label="Description and essentials">
+      <article class="card">
+        <div class="cardHead">
+          <h2 class="sectionName" style="margin:0;">Description</h2>
+        </div>
+        <div class="cardBody">
+          <p class="bigText">
+            The Alhambra is not one building, it’s a layered place: fortress walls, royal rooms, courtyards,
+            and gardens that work together like a carefully composed route. Expect <b>silence pockets</b> in arcades,
+            sudden bursts of light, and a constant thread of water: channels, pools, fountains.
+            <br><br>
+            What you’ll notice first is the contrast. Outside: rough defensive stone, towers, wide views. Inside:
+            intricate plasterwork, repeating geometry, wood ceilings, calligraphy, and rooms designed to feel cool even on hot days.
+            You move from space to space like turning pages, each one with a different “attention hook”:
+            a reflection pool, a framed view, a patterned wall that changes as you shift one step.
+          </p>
+
+          <p class="smallNote">
+            Practical expectation: it reads best when you go slower than you think you need to.
+            The details are the headline here.
+          </p>
+        </div>
+      </article>
+
+      <aside class="essentials" aria-label="Quick essentials">
+        <div class="essHead">
+          <div class="essTitle">Quick essentials</div>
+          <div class="essBadge">High value basics</div>
+        </div>
+        <div class="essList">
+          <div class="essRow"><span>City</span><b>Granada, Andalusia</b></div>
+          <div class="essRow"><span>Type</span><b>Palace + fortress + gardens</b></div>
+          <div class="essRow"><span>Terrain</span><b>Uphill paths + long walk</b></div>
+          <div class="essRow"><span>Key moment</span><b>Golden hour viewpoints</b></div>
+          <div class="essRow"><span>Real-life tip</span><b>Book timed entry early (especially palaces)</b></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- HISTORY + INTERESTING FACTS TOGETHER -->
+    <section class="card" id="history" aria-label="History and interesting facts" style="margin-top:14px;">
+      <div class="cardHead">
+        <h2 class="sectionName" style="margin:0;">History + interesting facts</h2>
+      </div>
+      <div class="cardBody">
+        <p class="bigText">
+          The Alhambra grew into a royal city on a hill. Its most famous palatial spaces come from the Nasrid period,
+          when Granada was the last Muslim kingdom in Iberia. After 1492, the site shifted into new hands and uses,
+          which is why you feel more than one era in the same walk: defensive walls and watchtowers, refined court life,
+          later additions, restorations, and changing priorities over centuries.
+          <br><br>
+          Interesting detail: the architecture isn’t only about decoration. Many spaces are built around <b>controlled sightlines</b>
+          and <b>microclimates</b> (shade, airflow, water), turning comfort into a design language. Even the most photogenic courtyards
+          are also practical machines for light and temperature.
+          <br><br>
+          Another “you notice it on-site” fact: the ornamentation often works like a gradient. From a distance it reads as texture.
+          Up close it becomes text, geometry, and tiny decisions repeated with astonishing discipline.
+        </p>
+
+        <div style="margin-top:14px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px;">
+          <div class="seeCard" style="min-height:auto;">
+            <p class="seeTitle">The “water logic”</p>
+            <p class="seeText">Pools and channels are not just pretty. They cool the air, amplify light, and create calm.</p>
+            <div class="seeMeta"><span class="chip">comfort by design</span><span class="chip">reflection</span></div>
+          </div>
+          <div class="seeCard" style="min-height:auto;">
+            <p class="seeTitle">Text as architecture</p>
+            <p class="seeText">Calligraphy and patterns frame the rooms. It’s storytelling built into surfaces.</p>
+            <div class="seeMeta"><span class="chip">detail-driven</span><span class="chip">close-up reward</span></div>
+          </div>
+          <div class="seeCard" style="min-height:auto;">
+            <p class="seeTitle">A city on a hill</p>
+            <p class="seeText">Expect towers, slopes, and layered viewpoints over Granada and (often) the Sierra Nevada.</p>
+            <div class="seeMeta"><span class="chip">views</span><span class="chip">walking</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT TO SEE (original, less empty) -->
+    <section class="seeWrap" id="see" aria-label="What to see">
+      <div class="seeHead">
+        <h2 class="sectionName" style="margin:0;">What to see</h2>
+      </div>
+
+      <div class="seeGrid">
+        <div class="seeCard">
+          <p class="seeTitle">Nasrid Palaces</p>
+          <p class="seeText">Courtyards, carved plaster, wood ceilings, and the “quiet precision” vibe of royal rooms.</p>
+          <div class="seeMeta">
+            <span class="chip">timed entry</span>
+            <span class="chip">best details</span>
+            <span class="chip">must-do</span>
+          </div>
+        </div>
+
+        <div class="seeCard">
+          <p class="seeTitle">Generalife Gardens</p>
+          <p class="seeText">Terraces, water channels, shade, and a slower pace. Great reset after palace interiors.</p>
+          <div class="seeMeta">
+            <span class="chip">green + water</span>
+            <span class="chip">cooler feel</span>
+          </div>
+        </div>
+
+        <div class="seeCard">
+          <p class="seeTitle">Alcazaba (fortress)</p>
+          <p class="seeText">The rough, defensive side: towers and wind. Big payoff if you like open views and stone.</p>
+          <div class="seeMeta">
+            <span class="chip">viewpoints</span>
+            <span class="chip">steps</span>
+          </div>
+        </div>
+
+        <div class="seeCard">
+          <p class="seeTitle">Courtyards + reflection pools</p>
+          <p class="seeText">The “camera magnet” moments. Water turns architecture into doubles; light does the rest.</p>
+          <div class="seeMeta">
+            <span class="chip">photos</span>
+            <span class="chip">golden hour</span>
+          </div>
+        </div>
+
+        <div class="seeCard">
+          <p class="seeTitle">Framed Granada views</p>
+          <p class="seeText">Look for windows and passages that act like viewfinders. The city appears in deliberate slices.</p>
+          <div class="seeMeta">
+            <span class="chip">slow down</span>
+            <span class="chip">spot-the-frame</span>
+          </div>
+        </div>
+
+        <div class="seeCard">
+          <p class="seeTitle">Texture hunting</p>
+          <p class="seeText">Pick one wall and follow it: repeating motifs, tiny variations, and a real sense of craft.</p>
+          <div class="seeMeta">
+            <span class="chip">close-up</span>
+            <span class="chip">unexpected favorite</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHEN TO STAY (redesigned, clearer) -->
+    <section class="stayWrap" id="stay" aria-label="When to stay">
+      <div class="stayCard">
+        <div class="stayHead">
+          <h2 class="sectionName" style="margin:0;">When to stay</h2>
+        </div>
+        <div class="stayBody">
+          <p class="bigText" style="font-size:16.5px;">
+            The Alhambra rewards <b>soft light</b> and <b>cooler air</b>. If you can choose, go earlier in the day,
+            or aim for late afternoon when the stone warms in color. Midday can feel harsher: brighter sun, flatter photos,
+            and more “tour group traffic.”
+          </p>
+
+          <div class="bars">
+            <div class="barRow">
+              <div class="barLabel">Early</div>
+              <div class="bar"><i style="width:32%;"></i></div>
+              <div class="barNote">quiet</div>
+            </div>
+            <div class="barRow">
+              <div class="barLabel">Midday</div>
+              <div class="bar"><i style="width:82%;"></i></div>
+              <div class="barNote">busy</div>
+            </div>
+            <div class="barRow">
+              <div class="barLabel">Late</div>
+              <div class="bar"><i style="width:46%;"></i></div>
+              <div class="barNote">best light</div>
+            </div>
+            <div class="barRow">
+              <div class="barLabel">Hot days</div>
+              <div class="bar"><i style="width:70%;"></i></div>
+              <div class="barNote">plan shade</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stayCard">
+        <div class="stayHead">
+          <h2 class="sectionName" style="margin:0;">Time planning that feels practical</h2>
+        </div>
+        <div class="stayBody">
+          <div class="essRow" style="background:rgba(255,255,255,.90);">
+            <span>Good minimum</span><b>Palaces + one garden loop</b>
+          </div>
+          <div class="essRow" style="background:rgba(255,255,255,.90); margin-top:10px;">
+            <span>Comfort pace</span><b>Add fortress + viewpoints</b>
+          </div>
+          <div class="essRow" style="background:rgba(255,255,255,.90); margin-top:10px;">
+            <span>If you love detail</span><b>Extra slow, fewer photos, more looking</b>
+          </div>
+          <p class="smallNote" style="margin-top:12px;">
+            This is intentionally “human practical” instead of strict times. Your team can replace with real durations later.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT TO BRING & WARNINGS (longer) -->
+    <section class="warnWrap" id="bring" aria-label="What to bring and warnings">
+      <div class="warnHead">
+        <h2 class="sectionName" style="margin:0;">What to bring & warnings</h2>
+      </div>
+      <div class="warnBody">
+        <p class="bigText" style="font-size:16.5px;">
+          Treat this like a <b>walking day</b>, not a “quick monument stop.” Paths can be long, slopes are real,
+          and you’ll switch between sun, shade, and cool interiors. The details are the reason you’re here,
+          so anything that helps you stay comfortable (and patient) increases the quality of the visit.
+        </p>
+
+        <div class="warnCols">
+          <div class="warnBox">
+            <h3>Bring (low-regret)</h3>
+            <ul class="warnList">
+              <li><b>Water</b> (especially in warm months). You’ll be moving and sun adds up quickly.</li>
+              <li><b>Comfortable shoes</b> with grip. You’ll do more steps than expected.</li>
+              <li><b>Sun protection</b>: sunglasses + light layer. Some areas are exposed.</li>
+              <li><b>A tiny “detail tool”</b>: phone camera for close-ups (not just wide shots).</li>
+            </ul>
+          </div>
+
+          <div class="warnBox">
+            <h3>Warnings that matter</h3>
+            <p>
+              Tickets and timed entry can define the entire day. If you have a fixed time for the palaces,
+              build everything else around that slot, not the other way around. Also: peak periods can feel like
+              slow traffic through narrow spaces, so expect pauses.
+            </p>
+            <ul class="warnList">
+              <li><b>Heat</b>: midday sun can be intense. Plan shaded breaks deliberately.</li>
+              <li><b>Slopes</b>: it’s a hilltop complex. Save energy for the end.</li>
+              <li><b>Crowds</b>: the “famous courtyards” draw people. Walk one corridor further for calmer moments.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION + MAP -->
+    <section class="locGrid" id="location" aria-label="Location and map">
+      <div class="locCard">
+        <div class="locHead">
+          <h2 class="sectionName" style="margin:0;">Location</h2>
+        </div>
+        <div class="locBody">
+          <div style="font-weight:950; color:rgba(11,18,32,.90); font-size:14px;">
+            Granada, Spain (hilltop above the city)
+          </div>
+
+          <div class="miniPills">
+            <span class="miniPill">Walkable viewpoints</span>
+            <span class="miniPill">Gardens + courtyards</span>
+            <span class="miniPill">Historic complex</span>
+          </div>
+
+          <div class="btnRow">
+            <a class="btn" href="#" onclick="alert('Prototype button. Connect to Google Maps / OSM.'); return false;">Open in Maps ↗</a>
+            <a class="btn" href="#" onclick="alert('Prototype button. Could open ticket page / timeslots.'); return false;">Tickets ↗</a>
+            <a class="btn" href="#" onclick="alert('Prototype button. Could open transport + parking guidance.'); return false;">Getting there ↗</a>
+          </div>
+
+          <p class="smallNote">
+            This is a design prototype. Your team can plug in real coordinates, routes, and data feeds.
+          </p>
+        </div>
+      </div>
+
+      <div class="locCard">
+        <div class="locHead">
+          <h2 class="sectionName" style="margin:0;">Interactive map + nearby</h2>
+        </div>
+        <div class="locBody">
+          <div class="mapShell" aria-label="Map prototype">
+            <div class="mapBg"></div>
+            <div class="mapLabel">Map (prototype, English UI)</div>
+            <div class="mapLegend">
+              <span class="legendChip">Main landmark</span>
+              <span class="legendChip">Nearby</span>
+              <span class="legendChip">Viewpoint</span>
+            </div>
+
+            <div class="mapSearch" aria-label="Search nearby (prototype)">
+              <div class="glassIcon">⌕</div>
+              <div>Search nearby: viewpoints, tapas, gardens…</div>
+            </div>
+
+            <!-- Main -->
+            <div class="pin main" style="left:58%; top:46%;"></div>
+            <div class="popup" style="left:60%; top:18%;">
+              <div class="popTop">
+                <div class="popTitle">The Alhambra</div>
+                <div class="popRating">★ 4.7 · (connect)</div>
+              </div>
+              <p class="popText">“Go slow for the details. Courtyards + water + light = the whole point.”</p>
+            </div>
+
+            <!-- Nearby (placeholders: swap to real nearby POIs later) -->
+            <div class="pin near" style="left:32%; top:56%;"></div>
+            <div class="popup" style="left:10%; top:56%;">
+              <div class="popTop">
+                <div class="popTitle">Old Town / Albaicín (nearby)</div>
+                <div class="popRating">★ 4.8 · (connect)</div>
+              </div>
+              <p class="popText">“Best for wandering streets + viewpoints back toward the Alhambra.”</p>
+            </div>
+
+            <div class="pin view" style="left:38%; top:34%;"></div>
+            <div class="popup" style="left:10%; top:14%;">
+              <div class="popTop">
+                <div class="popTitle">Classic viewpoint (nearby)</div>
+                <div class="popRating">★ 4.7 · (connect)</div>
+              </div>
+              <p class="popText">“Come for golden hour. The fortress silhouette is unreal.”</p>
+            </div>
+          </div>
+
+          <p class="smallNote" style="margin-top:12px;">
+            Pins show hover popups (no clicking). Replace the placeholder POIs/reviews with your real source.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS + TIPS -->
+    <section class="reviewsWrap" id="reviews" aria-label="Reviews and tips">
+      <div class="reviewsHead">
+        <h2 class="sectionName" style="margin:0;">What people say</h2>
+      </div>
+      <div class="reviewsBody">
+        <p class="bigText" style="font-size:16.5px;">
+          Below are <b>prototype review cards</b> to show layout. Swap these with real reviews from your feed.
+        </p>
+
+        <div class="reviewsGrid">
+          <div class="quote">
+            <div class="quoteTop">
+              <div class="qName">Visitor</div>
+              <div class="qMeta">Sample · 2025</div>
+            </div>
+            <p class="qText">
+              “The carved details are on another level. The best moments were the quiet corners, not the main photo spots.”
+            </p>
+          </div>
+
+          <div class="quote">
+            <div class="quoteTop">
+              <div class="qName">Visitor</div>
+              <div class="qMeta">Sample · 2025</div>
+            </div>
+            <p class="qText">
+              “Timed entry matters. Once we planned around the palace slot, the rest of the visit felt smooth.”
+            </p>
+          </div>
+
+          <div class="tipsBox">
+            <h3>Tips from people who’ve been there</h3>
+            <ul class="tipsList">
+              <li><b>Book early</b> and build the day around the timed palace entry.</li>
+              <li>Don’t rush. The “wow” is in the close-up craft, not only the wide views.</li>
+              <li>Take a short break in the gardens to reset your pace and attention.</li>
+              <li>If it’s hot, plan shade intentionally instead of “pushing through.”</li>
+            </ul>
+          </div>
+
+          <div class="quote">
+            <div class="quoteTop">
+              <div class="qName">Visitor</div>
+              <div class="qMeta">Sample · 2024</div>
+            </div>
+            <p class="qText">
+              “Late afternoon light made everything warmer. Courtyards felt calmer once we left the first big crowd.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footerNote">
+      Prototype page for The Alhambra. Photos are local files (“descarga (1).jpg” … “descarga (11).jpg”) in the same folder as this HTML.
+    </div>
+  </main>
+
+  <!-- Zoom modal -->
+  <div class="modal" id="modal" aria-label="Photo zoom modal" role="dialog" aria-modal="true">
+    <div class="modalInner">
+      <button class="modalClose" id="modalClose" aria-label="Close zoom">Close</button>
+      <img id="modalImg" src="" alt="Zoomed photo" />
+    </div>
+  </div>
+
+  <script>
+    // Expected filenames (place all in the same folder as the HTML)
+    // If one is missing, it will be skipped automatically.
+    const photoCandidates = [
+      "descarga (1).jpg",
+      "descarga (2).jpg",
+      "descarga (3).jpg",
+      "descarga (4).jpg",
+      "descarga (5).jpg",
+      "descarga (6).jpg",
+      "descarga (7).jpg",
+      "descarga (8).jpg",
+      "descarga (9).jpg",
+      "descarga (10).jpg",
+      "descarga (11).jpg"
+    ];
+
+    const photoLabels = [
+      "Courtyard reflections",
+      "Evening walls + skyline",
+      "Panoramic complex view",
+      "Columns + symmetry",
+      "Garden paths",
+      "Winter Granada + Sierra Nevada",
+      "Long pool perspective",
+      "Fountain courtyard",
+      "Alhambra in the landscape",
+      "Water garden moment",
+      "Extra photo"
+    ];
+
+    const mainImg = document.getElementById("mainImg");
+    const mainCaption = document.getElementById("mainCaption");
+    const thumbs = document.getElementById("thumbs");
+    const photoCount = document.getElementById("photoCount");
+
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const modalClose = document.getElementById("modalClose");
+    const mainPhoto = document.getElementById("mainPhoto");
+
+    let photos = [];
+    let labels = [];
+    let idx = 0;
+
+    function preloadAndFilter(list){
+      return Promise.all(list.map((src, i) => new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve({ ok:true, src, label: photoLabels[i] || `Photo ${i+1}` });
+        img.onerror = () => resolve({ ok:false, src, label: photoLabels[i] || `Photo ${i+1}` });
+        img.src = src;
+      }))).then(results => results.filter(r => r.ok));
+    }
+
+    function setMain(i){
+      idx = i;
+      mainImg.src = photos[idx];
+      mainCaption.textContent = `${labels[idx]} · ${idx + 1}/${photos.length}`;
+      renderThumbs();
+    }
+
+    function renderThumbs(){
+      thumbs.innerHTML = "";
+      photos.forEach((src, i) => {
+        const t = document.createElement("div");
+        t.className = "thumb" + (i === idx ? " active" : "");
+        t.title = labels[i];
+        const im = document.createElement("img");
+        im.src = src;
+        im.alt = labels[i];
+        t.appendChild(im);
+        t.addEventListener("click", () => setMain(i));
+        thumbs.appendChild(t);
+      });
+      photoCount.textContent = `${photos.length} photo${photos.length === 1 ? "" : "s"} (click to zoom)`;
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (!photos.length) return;
+      setMain((idx - 1 + photos.length) % photos.length);
+    });
+    nextBtn.addEventListener("click", () => {
+      if (!photos.length) return;
+      setMain((idx + 1) % photos.length);
+    });
+
+    // Zoom
+    function openZoom(){
+      if (!photos.length) return;
+      modalImg.src = photos[idx];
+      modal.classList.add("open");
+    }
+    function closeZoom(){
+      modal.classList.remove("open");
+      modalImg.src = "";
+    }
+    mainPhoto.addEventListener("click", openZoom);
+    modalClose.addEventListener("click", closeZoom);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeZoom(); });
+    window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeZoom(); });
+
+    // Init
+    preloadAndFilter(photoCandidates).then(valid => {
+      photos = valid.map(v => v.src);
+      labels = valid.map(v => v.label);
+
+      if (!photos.length){
+        // If no images found, keep a clean empty state
+        mainImg.alt = "No local photos found. Place descarga (1).jpg ... descarga (11).jpg next to this HTML.";
+        mainCaption.textContent = "No photos found. Add the image files next to the HTML.";
+        photoCount.textContent = "0 photos";
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        return;
+      }
+
+      setMain(0);
+    });
+  </script>
+</body>
+</html>
